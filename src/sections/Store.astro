@@ -1,0 +1,42 @@
+---
+import StoreComponent from '../components/StoreComponent.jsx';
+---
+
+<StoreComponent client:load />
+
+<style is:global>
+  /* Centrar el dialog */
+  dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+
+  /* Animación de apertura del dialog */
+  dialog[open] {
+    animation: dialogFadeIn 0.3s ease-out;
+  }
+
+  @keyframes dialogFadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  /* Animaciones */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
