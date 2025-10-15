@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<title>HonlyCraft Store</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="HonlyCraft Store - La mejor tienda de artículos y servicios para Minecraft. Servidores, mods, texturas y más." />
+		<meta name="keywords" content="minecraft, tienda, servidores, mods, texturas, craft" />
+		<meta name="author" content="HonlyCraft" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://honlycraft.com/" />
+		<meta property="og:title" content="HonlyCraft Store - Tu tienda de Minecraft" />
+		<meta property="og:description" content="La mejor tienda de artículos y servicios para Minecraft" />
+		<meta property="og:image" content="/favicon.webp" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://honlycraft.com/" />
+		<meta property="twitter:title" content="HonlyCraft Store - Tu tienda de Minecraft" />
+		<meta property="twitter:description" content="La mejor tienda de artículos y servicios para Minecraft" />
+		<meta property="twitter:image" content="/favicon.webp" />
+
+		<link rel="icon" type="image/webp" href="/favicon.webp" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	</head>
+	<body class="min-h-screen bg-gray-100">
+		<div id="background-mask" class="min-h-screen w-full relative">
+			<main class="relative z-10">
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
+
+<style is:global>
+@import "tailwindcss";
+@plugin "@midudev/tailwind-animations";
+
+/* Reset y configuración base */
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+body {
+	background-color: #f3f4f6;
+	font-family: "Poppins.light", system-ui, -apple-system, sans-serif;
+	line-height: 1.6;
+	color: #1f2937;
+}
+
+/* Importación de fuentes */
+@font-face {
+	font-family: "Anton-regular";
+	src: url(/fonts/Anton-Regular.ttf) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins.light";
+	src: url(/fonts/poppins.light.ttf) format('truetype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+
+/* Configuración de fuentes en Tailwind */
+@theme {
+	--font-regular: "Anton-regular", system-ui, sans-serif;
+	--font-light: "Poppins.light", system-ui, sans-serif;
+}
+
+/* Fondo principal */
+#background-mask {
+	background-image: url("/fondo.webp");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	filter: brightness(0.7) contrast(1.1);
+	position: relative;
+	min-height: 100vh;
+}
+
+/* Header específico */
+header {
+	position: relative;
+	z-index: 50;
+	width: 100%;
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	margin: auto;
+	display: flex;
+}
+
+#background-mask::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+	z-index: 1;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #111827;
+		color: #f9fafb;
+	}
+}
+
+/* Utilidades personalizadas */
+.text-shadow {
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.backdrop-blur-custom {
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+/* Animaciones suaves */
+.fade-in {
+	animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+	#background-mask {
+		background-attachment: scroll;
+	}
+}
+</style>
+
