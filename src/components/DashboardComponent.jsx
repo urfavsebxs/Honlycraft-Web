@@ -22,8 +22,8 @@ export default function DashboardComponent() {
       }
 
       const baseURL = import.meta.env.DEV
-        ? "http://localhost:4321"
-        : "https://tusitio.com";
+        ? "https://honlycraft-web.onrender.com" // tu URL real en Render
+        : "http://localhost:4321"; 
 
       // Obtener stats de todos los jugadores
       const resStats = await fetch(`${baseURL}/api/stats`);
