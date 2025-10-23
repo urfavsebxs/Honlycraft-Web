@@ -22,8 +22,8 @@ export default function DashboardComponent() {
       }
 
       const baseURL = import.meta.env.DEV
-        ? "https://honlycraft-web.onrender.com" // tu URL real en Render
-        : "http://localhost:4321"; 
+        ? "http://localhost:4321"          // desarrollo
+        : "https://honlycraft-web.onrender.com"; // producción
 
       // Obtener stats de todos los jugadores
       const resStats = await fetch(`${baseURL}/api/stats`);
