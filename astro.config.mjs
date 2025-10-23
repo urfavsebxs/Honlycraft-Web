@@ -5,8 +5,10 @@ import tailwindcss from '@tailwindcss/vite';
 import nodeAdapter from '@astrojs/node';
 
 export default defineConfig({
-  output: 'server',         // importante para SSR
-  adapter: nodeAdapter(),    // adapter Node
+  output: 'server',
+  adapter: nodeAdapter({
+    mode: 'standalone' // <- importante
+  }),
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
