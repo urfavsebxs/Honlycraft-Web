@@ -1,7 +1,9 @@
 ---
 import MinecraftSkin from "@/components/MinecraftSkin.astro";
 
-const baseURL = "https://honlycraft-web.onrender.com";
+const baseURL = import.meta.env.DEV
+  ? "https://honlycraft-web.onrender.com" // tu URL real en Render
+  : "http://localhost:4321"; 
 
 // Suponiendo que tienes el username logueado
 const username = Astro.cookies.get("username") || "usuarioDefault";
