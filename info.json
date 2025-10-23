@@ -1,0 +1,151 @@
+{
+  "ip": "mc.honlycraft.us",
+  "version": "1.8 - 1-21",
+  "games": [
+    "SoupPvP",
+    "SurvivalOP",
+    "KBFFA",
+    "Skywars"
+  ],
+  "rangos": [
+    {
+      "id": 1,
+      "name": "Rango Hero",
+      "price": 1.30,
+      "originalPrice": 2.00,
+      "image": "/products/rank_hero.png",
+      "category": "rangos",
+      "inStock": true
+    },
+    {
+      "id": 2,
+      "name": "Rango Elite",
+      "price": 3.80,
+      "originalPrice": 5.00,
+      "image": "/products/rank_elite.png",
+      "category": "rangos",
+      "inStock": true
+    },
+    {
+      "id": 3,
+      "name": "Rango Legend",
+      "price": 8.20,
+      "originalPrice": 10.00,
+      "image": "/products/rank_legend.png",
+      "category": "rangos",
+      "inStock": true
+    },
+    {
+      "id": 4,
+      "name": "Rango Supreme",
+      "price": 15.00,
+      "originalPrice": 17.50,
+      "image": "/products/rank_supreme.png",
+      "category": "rangos",
+      "inStock": true
+    },
+    {
+      "id": 5,
+      "name": "Rango Honly",
+      "price": 20.00,
+      "originalPrice": 25.00,
+      "image": "/products/rank_honly.png",
+      "category": "rangos",
+      "inStock": true
+    },
+    {
+      "id": 6,
+      "name": "Rango Kings",
+      "price": 29.00,
+      "originalPrice": 32.50,
+      "image": "/products/rank_kings.png",
+      "category": "rangos",
+      "inStock": true
+    }
+  ],
+  "survival_keys": [
+    {
+      "id": 7,
+      "name": "Llave Común",
+      "price": 0.50,
+      "originalPrice": 1.00,
+      "image": "/products/key_common.png",
+      "category": "survival",
+      "inStock": true
+    },
+    {
+      "id": 8,
+      "name": "Llave Épica",
+      "price": 1.50,
+      "originalPrice": 2.00,
+      "image": "/products/key_epic.png",
+      "category": "survival",
+      "inStock": true
+    },
+    {
+      "id": 9,
+      "name": "Llave Legendaria",
+      "price": 2.50,
+      "originalPrice": 3.00,
+      "image": "/products/key_legendary.png",
+      "category": "survival",
+      "inStock": true
+    },
+    {
+      "id": 10,
+      "name": "Llave Generador",
+      "price": 1.50,
+      "originalPrice": 2.00,
+      "image": "/products/key_generator.png",
+      "category": "survival",
+      "inStock": true
+    },
+    {
+      "id": 11,
+      "name": "Llave Leyenda",
+      "price": 2.50,
+      "originalPrice": 3.90,
+      "image": "/products/key_legend.png",
+      "category": "survival",
+      "inStock": true
+    },
+    {
+      "id": 12,
+      "name": "Llave Kings",
+      "price": 4.00,
+      "originalPrice": 5.00,
+      "image": "/products/key_kings.png",
+      "category": "survival",
+      "inStock": true
+    }
+  ],
+  "survivalprotec": [
+    {
+      "id": 13,
+      "name": "Obsidiana 140x140",
+      "price": 1.60,
+      "originalPrice": 2.50,
+      "image": "/products/obsidian_140.png",
+      "category": "survival",
+      "inStock": true
+    },
+    {
+      "id": 14,
+      "name": "Esmeralda 190x190",
+      "price": 3.00,
+      "originalPrice": 4.50,
+      "image": "/products/emerald_190.png",
+      "category": "survival",
+      "inStock": true
+    },
+    {
+      "id": 15,
+      "name": "Faro 230x230",
+      "price": 4.50,
+      "originalPrice": 6.00,
+      "image": "/products/lighthouse_230.png",
+      "category": "survival",
+      "inStock": true
+    }
+  ]
+}

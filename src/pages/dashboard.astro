@@ -1,0 +1,44 @@
+---
+export const prerender = false;
+
+import Layout from '../layouts/Layout.astro';
+import Header from '../sections/Header.astro';
+import Footer from '../sections/Footer.astro';
+import DashboardComponent from '../components/DashboardComponent.jsx';
+---
+
+<Layout>
+    <Header />
+    <div id="dashboard-content">
+        <DashboardComponent client:load />
+    </div>
+    <Footer />  
+</Layout>
+
+<script>
+    // Verificar autenticación
+    function checkAuth() {
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+        
+        if (!token || !user) {
+            // Usuario no autenticado, redirigir al login
+            window.location.href = '/login';
+            return;
+        }
+        
+        try {
+            const userData = JSON.parse(user);
+            console.log('Usuario autenticado:', userData.username, 'Rol:', userData.role);
+        } catch (error) {
+            console.error('Error al parsear datos de usuario:', error);
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = '/login';
+        }
+    }
+    
+    // Verificar autenticación al cargar la página
+    checkAuth();
+</script>
+    

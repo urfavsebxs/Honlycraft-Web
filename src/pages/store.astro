@@ -1,25 +1,12 @@
 ---
+import Header from '@/sections/Header.astro';
+import Footer from '@/sections/Footer.astro';
 import Layout from '../layouts/Layout.astro';
-import Logo from '/public/favicon.webp';
 import StoreSection from '@/sections/Store.astro';
 ---
 
 <Layout>
-	<header class="w-full bg-black/80 backdrop-blur-md flex items-center justify-between px-8 py-6 shadow-2xl border border-gray-600/50 rounded-md mt-8 mb-8">
-  <div class="flex items-center gap-4">
-    <img src={Logo.src} alt="Logo" class="w-16 h-16 animate-fade-in-up" />
-    <h1 class="text-4xl sm:text-5xl font-regular flex items-baseline gap-x-1">
-      <span class="text-white animate-fade-in-up">Honly</span>
-      <span class="text-blue-400 animate-fade-in-up">Craft</span>
-    </h1>
-  </div>
-  <nav class="flex items-center gap-6">
-    <a href="/aboutus" class="text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">Nosotros</a>
-    <a href="./" class="text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">Volver</a>
-    <div id="auth-button-container"></div>
-    <div id="cart-button-container"></div>
-  </nav>
-</header>
-
-<StoreSection />
+  <Header />
+  <StoreSection />
+  <Footer />
 </Layout>

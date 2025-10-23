@@ -1,5 +1,6 @@
 ---
 // Página principal de HonlyCraft
+import Info from 'info.json';
 ---
 
 <!-- Hero Section -->
@@ -11,25 +12,25 @@
         <span class="text-blue-400">Craft</span>
       </h1>
       <p class="text-xl sm:text-2xl md:text-3xl font-light text-white mb-8 text-shadow max-w-4xl mx-auto leading-relaxed">
-        La mejor experiencia de Minecraft te espera. Únete a nuestra comunidad y descubre mundos increíbles.
+        ¿Qué esperas para venir a probar la mejor experiencia de Minecraft? Con nuestras modalidades únicas y una comunidad increíble, ¡la diversión está garantizada!
       </p>
       <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8">
         <button class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 flex items-center gap-3">
           <span class="text-2xl">🎮</span>
-          <span>Jugar Ahora</span>
+          <span id="copyText">Jugar Ahora</span>
         </button>
         <button class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 flex items-center gap-3">
           <span class="text-2xl">💬</span>
-          <span>Discord</span>
+          <a href="https://discord.gg/YnwzTRVZNK" target="_blank">Discord</a>
         </button>
       </div>
       <div class="bg-black/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-amber-400/30">
         <p class="text-lg sm:text-xl font-light text-white">
           <span class="text-amber-400 font-bold">IP:</span> 
-          <span class="font-mono text-amber-300 bg-black/30 px-3 py-1 rounded-lg">play.honlycraft.com</span>
+          <span id="copyText2" class="font-mono text-amber-300 bg-black/30 px-3 py-1 rounded-lg">{Info.ip}</span>
         </p>
         <p class="text-sm sm:text-base text-gray-300 mt-2">
-          Versión: 1.20.1+ | Jugadores: 1,200+ Online
+          Versión: {Info.version} | Jugadores: 0/0 Online
         </p>
       </div>
     </div>
@@ -48,62 +49,63 @@
       </p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-      <!-- Lifesteal -->
+      <!-- SoupPVP -->
       <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-6 sm:p-8 border border-red-200 hover:border-red-300">
         <div class="text-center">
           <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center shadow-lg">
-            <span class="text-2xl sm:text-3xl">❤️</span>
+            <span class="text-2xl sm:text-3xl">🍜</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Lifesteal</h3>
-          <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Roba vida de otros jugadores en este emocionante modo PvP.</p>
+          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">{Info.games[0]}</h3>
+          <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Enfréntate a otros jugadores en combates rápidos donde la sopa es tu mejor aliada para dominar la arena.</p>
           <ul class="text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-2">
-            <li class="flex items-center justify-center gap-2">
+            <li class="flex items-center gap-2">
               <span class="w-2 h-2 bg-red-500 rounded-full"></span>
-              Eventos especiales
+              Regenera vida con sopa
+              </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+              Combates rápidos 1v1
             </li>
-            <li class="flex items-center justify-center gap-2">
+            <li class="flex items-center gap-2">
               <span class="w-2 h-2 bg-red-500 rounded-full"></span>
-              Warps de jugadores
+              Ármeros y kits predefinidos
             </li>
-            <li class="flex items-center justify-center gap-2">
+            <li class="flex items-center gap-2">
               <span class="w-2 h-2 bg-red-500 rounded-full"></span>
-              Arena PvP
-            </li>
-            <li class="flex items-center justify-center gap-2">
-              <span class="w-2 h-2 bg-red-500 rounded-full"></span>
-              Sistema de equipos
+              Clasificaciones
             </li>
           </ul>
+
           <button class="mt-4 sm:mt-6 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             Jugar Ahora
           </button>
         </div>
       </div>
 
-      <!-- Box PvP -->
+      <!-- SurvivalOP -->
       <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-6 sm:p-8 border border-blue-200 hover:border-blue-300">
         <div class="text-center">
           <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center shadow-lg">
             <span class="text-2xl sm:text-3xl">⚔️</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Box PvP</h3>
-          <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Combate intenso en arenas cerradas con drops especiales.</p>
+          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">{Info.games[1]}</h3>
+          <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Sobrevive y domina en un mundo OP, donde la economía y el PvP intenso determinan quién es el mejor.</p>
           <ul class="text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-2">
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-              Koths dinámicos
+              Sistema de Protección
             </li>
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-              Sistema de niveles
+              Sistema de progresión OP
             </li>
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-              Minas en zona de guerra
+              PvP libre
             </li>
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-              Supply Drops
+              Misiones opcionales
             </li>
           </ul>
           <button class="mt-4 sm:mt-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
@@ -118,24 +120,24 @@
           <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center shadow-lg">
             <span class="text-2xl sm:text-3xl">🌍</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">SMP</h3>
-          <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Supervivencia multijugador con características únicas.</p>
+          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">{Info.games[2]}</h3>
+          <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Compite en combates rápidos de PvP donde cada jugador lucha solo por la victoria en la arena.</p>
           <ul class="text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-2">
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-              Comerciantes NPC
+              Combates dinámicos
             </li>
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-              Portal AFK
+              Kits personalizados y mejoras
             </li>
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-              Wild Forge
+              ranking de jugadores
             </li>
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-              Minijuegos
+              Eventos PvP
             </li>
           </ul>
           <button class="mt-4 sm:mt-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
@@ -150,24 +152,24 @@
           <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center shadow-lg">
             <span class="text-2xl sm:text-3xl">🎲</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Random Kits</h3>
-          <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Demuestra tu habilidad con kits aleatorios.</p>
+          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">{Info.games[3]}</h3>
+          <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Salta a islas flotantes, recolecta recursos y enfréntate a otros jugadores hasta ser el último en pie.</p>
           <ul class="text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-2">
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-              Tienda de equipamiento
+              Tienda de comesticos
             </li>
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-              Items especiales
-            </li>
-            <li class="flex items-center justify-center gap-2">
-              <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-              Tiendas de jugadores
+              Tienda de Kits
             </li>
             <li class="flex items-center justify-center gap-2">
               <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
               Tabla de líderes
+            </li>
+            <li class="flex items-center justify-center gap-2">
+              <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+              Items especiales
             </li>
           </ul>
           <button class="mt-4 sm:mt-6 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
@@ -187,22 +189,22 @@
         Tienda <span class="text-amber-400">HonlyCraft</span>
       </h2>
       <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-        Mejora tu experiencia con nuestros paquetes especiales
+        Ayudanos a mejorar tu experiencia adquiriendo rangos y beneficios exclusivos en modalidades y permisos de nuestro servidor
       </p>
     </div>
     
     <!-- Oferta especial -->
-    <div class="bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl p-6 sm:p-8 mb-12 text-center shadow-2xl border border-red-400/30">
+    <!-- <div class="bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl p-6 sm:p-8 mb-12 text-center shadow-2xl border border-red-400/30">
       <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">🔥 OFERTA ESPECIAL 🔥</h3>
       <p class="text-xl sm:text-2xl text-white mb-4">35% DE DESCUENTO</p>
       <p class="text-base sm:text-lg text-white/90">Solo por tiempo limitado - ¡No te lo pierdas!</p>
-    </div>
+    </div>-->
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
       <!-- Paquete Básico -->
       <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200">
-        <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">Básico</h3>
-        <div class="text-3xl sm:text-4xl font-bold text-amber-500 mb-6">$5.99</div>
+        <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">{Info.rangos[0].name}</h3>
+        <div class="text-3xl sm:text-4xl font-bold text-amber-500 mb-6">${Info.rangos[0].originalPrice}</div>
         <ul class="space-y-3 text-gray-600 mb-8 text-sm sm:text-base">
           <li class="flex items-center gap-2">
             <span class="text-green-500">✅</span>
@@ -231,8 +233,8 @@
         <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-amber-400 text-black px-4 py-1 rounded-full text-xs sm:text-sm font-bold">
           MÁS POPULAR
         </div>
-        <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">Premium</h3>
-        <div class="text-3xl sm:text-4xl font-bold text-amber-500 mb-6">$12.99</div>
+        <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">{Info.rangos[1].name}</h3>
+        <div class="text-3xl sm:text-4xl font-bold text-amber-500 mb-6">${Info.rangos[1].originalPrice}</div>
         <ul class="space-y-3 text-gray-600 mb-8 text-sm sm:text-base">
           <li class="flex items-center gap-2">
             <span class="text-green-500">✅</span>
@@ -262,8 +264,8 @@
 
       <!-- Paquete Elite -->
       <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200">
-        <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">Elite</h3>
-        <div class="text-3xl sm:text-4xl font-bold text-amber-500 mb-6">$24.99</div>
+        <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">{Info.rangos[2].name}</h3>
+        <div class="text-3xl sm:text-4xl font-bold text-amber-500 mb-6">${Info.rangos[2].originalPrice}</div>
         <ul class="space-y-3 text-gray-600 mb-8 text-sm sm:text-base">
           <li class="flex items-center gap-2">
             <span class="text-green-500">✅</span>
@@ -295,6 +297,11 @@
         </button>
       </div>
     </div>
+      <div class="text-center">
+        <a href="/store" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block mt-8">
+          Visitar nuestra tienda
+        </a>
+      </div>
   </div>
 </section>
 
@@ -379,3 +386,27 @@
     </div>
   </div>
 </section>
+
+<script>
+  const copyText = document.getElementById("copyText");
+
+  copyText.addEventListener("click", () => {
+    navigator.clipboard.writeText("mc.honlycraft.us").then(() => {
+      copyText.textContent = "Copiado!";
+      setTimeout(() => {
+        copyText.textContent = "Jugar Ahora";
+      }, 2000);
+    });
+  });
+
+  const copyText2 = document.getElementById("copyText2");
+
+  copyText2.addEventListener("click", () => {
+    navigator.clipboard.writeText("mc.honlycraft.us").then(() => {
+      copyText2.textContent = "Copiado!";
+      setTimeout(() => {
+        copyText2.textContent = "mc.honlycraft.us";
+      }, 2000);
+    });
+  });
+</script>

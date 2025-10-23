@@ -1,8 +1,7 @@
 ---
 import Logo from "/public/favicon.webp";
 ---
-
-<header class="w-full bg-black/80 backdrop-blur-md flex items-center justify-between px-8 py-6 shadow-2xl border border-gray-600/50 rounded-md mt-8 mb-8">
+<header class="w-full bg-black/80 backdrop-blur-md flex items-center justify-between px-8 py-6 shadow-2xl border border-gray-600/50 rounded-md mt-8 mb-8 relative">
   <div class="flex items-center gap-4">
     <img src={Logo.src} alt="Logo" class="w-16 h-16 animate-fade-in-up" />
     <h1 class="text-4xl sm:text-5xl font-regular flex items-baseline gap-x-1">
@@ -10,9 +9,283 @@ import Logo from "/public/favicon.webp";
       <span class="text-blue-400 animate-fade-in-up">Craft</span>
     </h1>
   </div>
-  <nav class="flex items-center gap-6">
-    <a href="/aboutus" class="text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">Nosotros</a>
+
+  <nav class="flex items-center gap-8">
+    <a href="/" class="text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">Inicio</a>
     <a href="/store" class="text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">Tienda</a>
-    <a href="/Contacto" class="text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">Contacto</a>
+
+    <button id="btnCarrito" class="text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">Carrito</button>
+
+    <!-- Menú Comunidad -->
+    <div class="relative">
+      <button id="btnComunidad" class="flex items-center gap-1 text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">
+        Comunidad
+        <svg id="arrowComunidad" class="w-4 h-4 ml-1 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+
+      <div id="menuComunidad" class="hidden absolute left-1/2 -translate-x-1/2 mt-3 w-44 bg-black/90 backdrop-blur-md text-gray-200 rounded-2xl shadow-xl border border-gray-700/40 overflow-hidden">
+        <a href="/statics" class="block px-5 py-2.5 hover:bg-white/10">Estadísticas</a>
+        <a href="/aboutus" class="block px-5 py-2.5 hover:bg-white/10 transition">Nosotros</a>
+        <a href="/staff" class="block px-5 py-2.5 hover:bg-white/10 transition">Staff</a>
+        <a href="/rules" class="block px-5 py-2.5 hover:bg-white/10 transition">Reglas</a>
+      </div>
+    </div>
+
+    <!-- Menú Cuenta -->
+    <div class="relative">
+      <button id="btnCuenta" class="flex items-center gap-1 text-white font-bold text-xl hover:text-blue-400 transition px-3 py-2 rounded-lg hover:bg-white/10">
+        Cuenta
+        <svg id="arrowCuenta" class="w-4 h-4 ml-1 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+
+      <div id="menuCuenta" class="hidden absolute left-1/2 -translate-x-1/2 mt-3 w-44 bg-black/90 backdrop-blur-md text-gray-200 rounded-2xl shadow-xl border border-gray-700/40 overflow-hidden">
+        <!-- Contenido dinámico basado en autenticación -->
+        <div id="authContent">
+          <!-- Se llenará dinámicamente con JavaScript -->
+        </div>
+      </div>
+    </div>
   </nav>
+
+  <!-- 🛒 Diálogo del carrito -->
+  <dialog id="cartDialog" class="backdrop:bg-black/70 bg-zinc-900 rounded-2xl text-white p-6 shadow-2xl w-96">
+    <h2 class="text-2xl font-bold mb-4">Tu carrito</h2>
+    <div id="cartItems" class="space-y-3 max-h-60 overflow-y-auto"></div>
+    <div class="mt-4 flex justify-between items-center border-t border-gray-700 pt-3">
+      <span class="font-bold text-lg">Total: <span id="cartTotal">$0</span></span>
+      <button id="btnCheckout" class="bg-blue-600 hover:bg-blue-700 transition px-4 py-2 rounded-lg font-bold">Pagar</button>
+    </div>
+    <button id="btnCerrarDialogo" class="absolute top-3 right-4 text-gray-400 hover:text-white text-xl">&times;</button>
+  </dialog>
+
+  <script>
+    // Función para verificar autenticación
+    function isAuthenticated() {
+      const token = localStorage.getItem('token');
+      const user = localStorage.getItem('user');
+      return token && user;
+    }
+
+    // Función para obtener datos del usuario
+    function getUserData() {
+      const userData = localStorage.getItem('user');
+      if (!userData) return null;
+      try {
+        return JSON.parse(userData);
+      } catch {
+        return null;
+      }
+    }
+
+    // Función para cerrar sesión
+    async function logout() {
+      try {
+        // Llamar a la API de logout (opcional)
+        const token = localStorage.getItem('token');
+        if (token) {
+          await fetch('/api/auth/logout', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
+        }
+      } catch (error) {
+        console.warn('Error al llamar API de logout:', error);
+        // Continuar con el logout local aunque falle la API
+      }
+      
+      // Limpiar todos los datos de sesión
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('isAdminAuthenticated');
+      localStorage.removeItem('cart');
+      
+      // Actualizar el header inmediatamente
+      updateAuthMenu();
+      
+      // Disparar eventos para notificar a otros componentes
+      window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new Event('auth-changed'));
+      
+      // Redirigir al login
+      window.location.href = '/login';
+    }
+    
+    // Hacer la función logout globalmente accesible
+    (window as any).logout = logout;
+
+    // Función para actualizar el menú de cuenta
+    function updateAuthMenu() {
+      const authContent = document.getElementById('authContent');
+      if (!authContent) return;
+
+      if (isAuthenticated()) {
+        const user = getUserData();
+        if (user) {
+          authContent.innerHTML = `
+            <div class="px-5 py-2.5 border-b border-gray-700">
+              <p class="text-sm text-gray-400">Bienvenido</p>
+              <p class="font-bold text-white">${user.username}</p>
+              <p class="text-xs text-blue-400">${user.role}</p>
+            </div>
+            <a href="/dashboard" class="block px-5 py-2.5 hover:bg-white/10 transition font-bold">Dashboard</a>
+            <button onclick="logout()" class="w-full text-left px-5 py-2.5 hover:bg-white/10 transition font-bold text-red-400" id="logoutBtn">Cerrar Sesión</button>
+          `;
+          
+          // Agregar event listener al botón de logout
+          const logoutBtn = document.getElementById('logoutBtn');
+          if (logoutBtn) {
+            logoutBtn.addEventListener('click', async (e) => {
+              e.preventDefault();
+                await logout();
+              
+            });
+          }
+        }
+      } else {
+        authContent.innerHTML = `
+          <a href="/login" class="block px-5 py-2.5 hover:bg-white/10 transition font-bold">Login</a>
+        `;
+      }
+    }
+
+    // Menús desplegables
+    const menus = [
+      { btn: "btnComunidad", menu: "menuComunidad", arrow: "arrowComunidad" },
+      { btn: "btnCuenta", menu: "menuCuenta", arrow: "arrowCuenta" },
+    ];
+
+    menus.forEach(({ btn, menu, arrow }) => {
+      const button = document.getElementById(btn);
+      const dropdown = document.getElementById(menu);
+      const arrowIcon = document.getElementById(arrow);
+
+      if (button && dropdown && arrowIcon) {
+        button.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isVisible = !dropdown.classList.contains("hidden");
+          document.querySelectorAll('[id^="menu"]').forEach((m) => m.classList.add("hidden"));
+          document.querySelectorAll('[id^="arrow"]').forEach((a) => {
+            if (a instanceof HTMLElement) {
+              a.style.transform = "rotate(0deg)";
+            }
+          });
+          if (!isVisible) {
+            dropdown.classList.remove("hidden");
+            arrowIcon.style.transform = "rotate(180deg)";
+          }
+        });
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target && !(e.target as Element).closest("button")) {
+        document.querySelectorAll('[id^="menu"]').forEach((m) => m.classList.add("hidden"));
+        document.querySelectorAll('[id^="arrow"]').forEach((a) => {
+          if (a instanceof HTMLElement) {
+            a.style.transform = "rotate(0deg)";
+          }
+        });
+      }
+    });
+
+    // Actualizar menú al cargar la página
+    updateAuthMenu();
+
+    // Escuchar cambios en localStorage
+    window.addEventListener('storage', updateAuthMenu);
+    
+    // Escuchar eventos personalizados de autenticación
+    window.addEventListener('auth-changed', updateAuthMenu);
+
+    // 🛒 Carrito
+    const cartDialog = document.getElementById("cartDialog") as HTMLDialogElement;
+    const btnCarrito = document.getElementById("btnCarrito");
+    const btnCerrarDialogo = document.getElementById("btnCerrarDialogo");
+    const cartItemsContainer = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+
+    let cart: any[] = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    function showToast(message: string) {
+      const toast = document.createElement("div");
+      toast.textContent = message;
+      toast.className = "fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow-lg animate-fade-in-up";
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2000);
+    }
+
+    function cargarCarrito() {
+      cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      if (!cartItemsContainer) return;
+      
+      cartItemsContainer.innerHTML = "";
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p class='text-gray-400 text-center'>Tu carrito está vacío.</p>";
+      } else {
+        cart.forEach((item: any, index: number) => {
+          total += item.price;
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "flex justify-between items-center border-b border-gray-700 pb-2";
+          itemDiv.innerHTML = `
+            <span>${item.name}</span>
+            <span>$${item.price.toFixed(2)}</span>
+            <button class="ml-2 text-red-500 hover:text-red-700 font-bold">×</button>
+          `;
+          const removeBtn = itemDiv.querySelector("button");
+          if (removeBtn) {
+            removeBtn.addEventListener("click", () => handleRemoveFromCart(index));
+          }
+          cartItemsContainer.appendChild(itemDiv);
+        });
+      }
+
+      if (cartTotal) {
+        cartTotal.textContent = "$" + total.toFixed(2);
+      }
+    }
+
+    // 🔹 Exponer la función globalmente para React
+    (window as any).cargarCarrito = cargarCarrito;
+
+    function handleRemoveFromCart(index: number) {
+      const removedProduct = cart[index];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      cargarCarrito();
+      showToast(`🗑️ ${removedProduct.name} eliminado del carrito`);
+    }
+
+    if (btnCarrito && cartDialog) {
+      btnCarrito.addEventListener("click", () => {
+        cargarCarrito();
+        cartDialog.showModal();
+      });
+    }
+
+    if (btnCerrarDialogo && cartDialog) {
+      btnCerrarDialogo.addEventListener("click", () => cartDialog.close());
+    }
+
+    const btnCheckout = document.getElementById("btnCheckout");
+    if (btnCheckout && cartDialog) {
+      btnCheckout.addEventListener("click", () => {
+        alert("Procesando pago...");
+        cartDialog.close();
+      });
+    }
+  </script>
+
+  <style>
+    @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in-up { animation: fade-in-up 0.3s ease forwards; }
+  </style>
 </header>

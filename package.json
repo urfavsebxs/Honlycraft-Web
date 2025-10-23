@@ -11,13 +11,23 @@
   "dependencies": {
     "@astrojs/react": "^4.4.0",
     "@midudev/tailwind-animations": "^0.2.0",
-    "@stripe/stripe-js": "^8.0.0",
     "@tailwindcss/vite": "^4.1.14",
     "astro": "^5.14.1",
-    "gsap": "^3.13.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.1",
+    "morgan": "^1.10.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "stripe": "^19.1.0",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.14",
+    "undici": "^7.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

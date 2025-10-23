@@ -1,0 +1,55 @@
+---
+import MinecraftSkin from "@/components/MinecraftSkin.astro";
+
+const baseURL = import.meta.env.DEV
+  ? "http://localhost:4321"
+  : "https://tusitio.com";
+
+// Suponiendo que tienes el username logueado
+const username = Astro.cookies.get("username") || "usuarioDefault";
+
+// Traer stats de todos los jugadores
+const resStats = await fetch(`${baseURL}/api/stats`);
+const stats = await resStats.json();
+
+// Traer info del jugador logueado
+let playerData = {};
+try {
+  const resPlayer = await fetch(`${baseURL}/api/player`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username })
+  });
+
+  if (!resPlayer.ok) throw new Error(`Error ${resPlayer.status}: ${resPlayer.statusText}`);
+  playerData = await resPlayer.json();
+} catch (err) {
+  console.error(`[Dashboard] Error obteniendo datos de ${username}:`, err.message);
+}
+
+// Buscar stats del jugador
+const playerStats = stats.find(s => s.player === username);
+
+// Crear array de jugadores para render
+const players = [{
+  username: playerData.username,
+  uuid: playerData.uuid,
+  premium: playerData.premium,
+  skinURL: playerData.skinURL,
+  kills: playerStats?.kills ?? 0,
+  deaths: playerStats?.deaths ?? 0,
+  wins: playerStats?.wins ?? 0,
+}];
+---
+
+<div class="flex flex-wrap gap-4 justify-center mt-3 mb-3">
+  {players.map(player => (
+    <div class="text-center bg-gray-900 text-white p-4 rounded-2xl shadow-lg w-40">
+      <MinecraftSkin username={player.username} />
+      <p class="text-sm mt-2">Kills: {player.kills}</p>
+      <p class="text-sm">Deaths: {player.deaths}</p>
+      <p class="text-sm">Wins: {player.wins}</p>
+      <p class="text-xs mt-1 opacity-70">{player.premium ? "Premium" : "No Premium"}</p>
+    </div>
+  ))}
+</div>

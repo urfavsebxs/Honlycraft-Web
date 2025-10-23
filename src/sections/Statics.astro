@@ -1,0 +1,54 @@
+---
+import { fetchSkinURL } from "@/utils/minecraftAPI.js";
+import SkinsJSON from "skins.json";
+
+const baseURL = import.meta.env.DEV
+  ? "http://localhost:4321" // desarrollo
+  : "https://tusitio.com";  // producción
+
+const res = await fetch(`${baseURL}/api/stats`);
+const stats = await res.json();
+
+const Skins = SkinsJSON.skins.map(s => s.name);
+const players = [];
+
+for (const username of Skins) {
+  try {
+    const res = await fetch(`${baseURL}/api/player`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username }) // ✅ Esto manda un JSON válido
+    });
+
+    if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
+    const player = await res.json();
+
+    const playerStats = stats.find(s => s.player === username);
+    players.push({
+      username: player.username,
+      uuid: player.uuid,
+      premium: player.premium,
+      skinURL: player.skinURL,
+      kills: playerStats?.kills ?? 0,
+      deaths: playerStats?.deaths ?? 0,
+      wins: playerStats?.wins ?? 0,
+    });
+  } catch (err) {
+    console.error(`[Statics] Error con ${username}:`, err.message);
+  }
+}
+---
+<div class="flex flex-wrap gap-4 justify-center mt-3 mb-3">
+  {players.map(player => (
+    <div class="text-center bg-gray-900 text-white p-4 rounded-2xl shadow-lg w-40">
+      <p class="font-bold">{player.username}</p>
+      {player.skinURL
+        ? <img src={player.skinURL} alt={`Skin de ${player.username}`} width="100" class="mx-auto rounded-lg" />
+        : <p>No se pudo obtener la skin</p>}
+      <p class="text-sm mt-2">Kills: {player.kills}</p>
+      <p class="text-sm">Deaths: {player.deaths}</p>
+      <p class="text-sm">Wins: {player.wins}</p>
+      <p class="text-xs mt-1 opacity-70">{player.premium ? "Premium" : "No Premium"}</p>
+    </div>
+  ))}
+</div>
