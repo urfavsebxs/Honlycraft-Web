@@ -1,6 +1,13 @@
 # HonlyCraft Web ✨
 
-![HonlyCraft](public/logo.png)
+![HonlyCraft](public/favicon.webp)
+
+[![GitHub license](https://img.shields.io/github/license/Sebxs940/Honlycraft-Web)](https://github.com/Sebxs940/Honlycraft-Web/blob/main/LICENSE)
+[![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01.svg?logo=astro)](https://astro.build)
+[![React](https://img.shields.io/badge/React-19.x-61DAFB.svg?logo=react)](https://reactjs.org)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Latest-47A248.svg?logo=mongodb)](https://www.mongodb.com)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933.svg?logo=node.js)](https://nodejs.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
 
 [![GitHub license](https://img.shields.io/github/license/Sebxs940/Honlycraft-Web)](https://github.com/Sebxs940/Honlycraft-Web/blob/main/LICENSE)
 [![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01.svg?logo=astro)](https://astro.build)
@@ -249,4 +256,8 @@ Recomendaciones: escribe tests pequeños para nuevas funcionalidades y sigue el 
 
 Este proyecto está licenciado bajo la **MIT License** — ver `LICENSE` para detalles.
 
+<<<<<<< HEAD
 ---
+=======
+---
+>>>>>>> 6b376cadaec7a94019ca626ac4945f3241e1d57c
