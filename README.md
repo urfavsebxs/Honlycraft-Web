@@ -2,7 +2,7 @@
 
 <img src="public/favicon.webp" alt="HonlyCraft" width="100" height="100"/>
 
-[![GitHub license]()](https://github.com/urfavsebxs/Honlycraft-Web/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Sebxs940/Honlycraft-Web)](https://github.com/urfavsebxs/Honlycraft-Web/blob/main/LICENSE)
 [![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01.svg?logo=astro)](https://astro.build)
 [![React](https://img.shields.io/badge/React-19.x-61DAFB.svg?logo=react)](https://reactjs.org)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Latest-47A248.svg?logo=mongodb)](https://www.mongodb.com)
