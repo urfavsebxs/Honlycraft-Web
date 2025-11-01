@@ -1,6 +1,6 @@
 # HonlyCraft Web ✨
 
-![HonlyCraft](public/logo.png)
+![HonlyCraft](public/favicon.webp)
 
 Una web moderna para el servidor de Minecraft **HonlyCraft** — construida con Astro, React y MongoDB. Este repositorio contiene la web pública, el panel de administración y APIs para estadísticas y skins de jugadores.
 
