@@ -1,6 +1,6 @@
 # HonlyCraft Web ✨
 
-![HonlyCraft](public/favicon.webp)
+<img src="public/favicon.webp" alt="HonlyCraft" width="100" height="100"/>
 
 [![GitHub license](https://img.shields.io/github/license/Sebxs940/Honlycraft-Web)](https://github.com/Sebxs940/Honlycraft-Web/blob/main/LICENSE)
 [![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01.svg?logo=astro)](https://astro.build)
