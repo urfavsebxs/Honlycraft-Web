@@ -1,86 +1,80 @@
-# HonlyCraft Web
+# HonlyCraft Web ✨
 
-Una aplicación web moderna para el servidor de Minecraft HonlyCraft, construida con Astro, React y MongoDB.
+![HonlyCraft](public/logo.png)
 
-## 🚀 Características
+Una web moderna para el servidor de Minecraft **HonlyCraft** — construida con Astro, React y MongoDB. Este repositorio contiene la web pública, el panel de administración y APIs para estadísticas y skins de jugadores.
 
-- **Tienda de productos**: Sistema de compras con carrito de compras
-- **Panel de administración**: Gestión de descuentos y productos
-- **Sistema de autenticación**: Login con roles (admin, moderator, user)
-- **Dashboard de jugadores**: Estadísticas y skins de Minecraft
-- **API de Minecraft**: Integración con la API de Mojang para obtener datos de jugadores
-- **Diseño responsivo**: Interfaz moderna con Tailwind CSS
+---
 
-## 🛠️ Tecnologías
+## 🚀 Destacado
 
-- **Frontend**: Astro 5.x, React 19.x, Tailwind CSS 4.x
-- **Backend**: Node.js, Express, MongoDB
-- **Autenticación**: JWT, bcryptjs
-- **Base de datos**: MongoDB con Mongoose
+- 🎮 Tienda integrada (rangos, llaves, protecciones)
+- 🛒 Carrito y sistema de descuentos
+- 🧑‍💼 Panel de administración para gestionar productos y promociones
+- 🔐 Autenticación con roles (admin / moderator / user)
+- 📊 Dashboard de jugadores con estadísticas y render de skins
+- 🌐 Integración con la API de Mojang para UUIDs y datos de jugadores
+- 📱 Diseño responsivo con Tailwind CSS
 
-## 📋 Requisitos previos
+---
 
-- Node.js 18+ 
+## 🧰 Tecnologías
+
+- Frontend: **Astro 5.x**, **React 19.x**, **Tailwind CSS 4.x**
+- Backend: **Node.js**, **Express**
+- Base de datos: **MongoDB** + **Mongoose**
+- Autenticación: **JWT**, **bcryptjs**
+- Tests / scripts: Node.js scripts para seed y utilidades
+
+---
+
+## � Requisitos previos
+
+- Node.js 18+
 - MongoDB (local o Atlas)
 - pnpm (recomendado) o npm
 
-## ⚙️ Instalación
+---
 
-1. **Clonar el repositorio**
-   ```bash
-   git clone <url-del-repositorio>
-   cd Honlycraft-Web
-   ```
+## ⚙️ Instalación rápida
 
-2. **Instalar dependencias**
-   ```bash
-   pnpm install
-   # o
-   npm install
-   ```
+Clona el repositorio e instala dependencias:
 
-3. **Configurar variables de entorno**
-   
-   Crea un archivo `.env` en la raíz del proyecto:
-   ```env
-   # MongoDB Connection
-   MONGODB_URI=mongodb://localhost:27017/honlycraft
-   
-   # JWT Secret
-   JWT_SECRET=tu_jwt_secret_muy_seguro_aqui
-   
-   # Server Configuration
-   PORT=3000
-   ```
+```bash
+git clone <url-del-repositorio>
+cd Honlycraft-Web
+pnpm install    # o `npm install`
+```
 
-4. **Configurar MongoDB**
-   
-   Asegúrate de que MongoDB esté ejecutándose. Puedes usar:
-   - MongoDB local: `mongod`
-   - MongoDB Atlas: Usa la URI de conexión de tu cluster
+Crear un archivo `.env` en la raíz con las variables mínimas:
 
-5. **Poblar la base de datos (opcional)**
-   ```bash
-   node seed.js
-   ```
-   
-   Esto creará usuarios de ejemplo:
-   - **admin** / admin123 (rol: admin)
-   - **moderator** / mod123 (rol: moderator)  
-   - **user** / user123 (rol: user)
+```env
+MONGODB_URI=mongodb://localhost:27017/honlycraft
+JWT_SECRET=tu_jwt_secret_muy_seguro_aqui
+PORT=3000
+```
 
-## 🚀 Ejecución
+Opcional: poblar datos de ejemplo
 
-### Desarrollo
+```bash
+node seed.js
+# Usuarios de ejemplo: admin/admin123, moderator/mod123, user/user123
+```
+
+---
+
+## ▶️ Ejecutar en desarrollo
+
 ```bash
 pnpm dev
 # o
 npm run dev
 ```
 
-La aplicación estará disponible en `http://localhost:4321`
+La web por defecto estará disponible en `http://localhost:4321` (según la configuración de Astro en el proyecto).
 
-### Producción
+### Producción (build & preview)
+
 ```bash
 pnpm build
 pnpm preview
@@ -89,99 +83,109 @@ npm run build
 npm run preview
 ```
 
-## 📁 Estructura del proyecto
+---
+
+## 📁 Estructura principal
+
+Foco en las carpetas más relevantes del proyecto:
 
 ```
 src/
-├── components/          # Componentes React
-│   ├── LoginComponent.jsx
-│   ├── StoreComponent.jsx
-│   ├── AdminPanel.jsx
-│   └── MinecraftSkin.astro
-├── layouts/            # Layouts de Astro
-│   └── Layout.astro
-├── lib/                # Utilidades de base de datos
-│   └── mongodb.js
-├── models/             # Modelos de MongoDB
-│   ├── User.js
-│   ├── Player.js
-│   └── Stats.js
-├── pages/              # Páginas y API routes
-│   ├── api/            # Endpoints de API
-│   │   ├── auth/
-│   │   ├── player.js
-│   │   └── stats.js
-│   ├── dashboard.astro
-│   ├── login.astro
-│   ├── store.astro
-│   └── index.astro
-├── sections/           # Secciones de páginas
-│   ├── Header.astro
-│   ├── Footer.astro
-│   ├── Store.astro
-│   └── Dashboard.astro
-├── styles/             # Estilos globales
-│   └── global.css
-└── utils/              # Utilidades
-    ├── auth.js
-    └── minecraftAPI.js
+├─ components/       # Componentes React (Login, Store, Admin...)
+├─ layouts/          # Layouts de Astro
+├─ lib/              # Conexión MongoDB y utilidades
+├─ models/           # Modelos Mongoose (User, Player, Stats)
+├─ pages/            # Páginas y API routes
+│  ├─ api/
+│  │  ├─ auth/       # login, logout
+│  │  ├─ player.js
+│  │  └─ stats.js
+├─ sections/         # Secciones reutilizables (Header, Footer...)
+└─ utils/            # auth.js, middleware, minecraftAPI.js
 ```
 
-## 🔐 Sistema de autenticación
+---
 
-El sistema incluye tres roles:
-- **admin**: Acceso completo al panel de administración
-- **moderator**: Acceso limitado a funciones de moderación
-- **user**: Usuario estándar
+## 🔐 Autenticación & Roles
 
-### Endpoints de autenticación
+Se implementan roles para controlar accesos en el frontend y API:
 
-- `POST /api/auth/login` - Iniciar sesión
-- `POST /api/auth/logout` - Cerrar sesión
+- `admin` — acceso completo al panel de administración
+- `moderator` — acceso a herramientas de moderación
+- `user` — acceso estándar
 
-## 🛒 Sistema de tienda
+Endpoints principales:
 
-- **Productos**: Rangos, llaves de supervivencia, protecciones
-- **Carrito**: Gestión de productos en el carrito
-- **Descuentos**: Sistema de precios con descuentos
-- **Panel admin**: Gestión de descuentos
+- `POST /api/auth/login`  — iniciar sesión (devuelve JWT)
+- `POST /api/auth/logout` — cerrar sesión
 
-## 🎮 Integración con Minecraft
+---
 
-- **API de Mojang**: Obtención de UUIDs y datos de jugadores
-- **Skins**: Renderizado de skins de Minecraft
-- **Estadísticas**: Sistema de kills, deaths, wins
+## 🛒 Tienda
 
-## 🐛 Solución de problemas
+- Productos: rangos, llaves, protecciones
+- Carrito con persistencia de sesión
+- Sistema de descuentos y precios dinámicos
+- Panel admin para crear/editar productos y cupones
 
-### Error de conexión a MongoDB
-- Verifica que MongoDB esté ejecutándose
-- Revisa la URI de conexión en `.env`
-- Asegúrate de que la base de datos exista
+---
 
-### Error de JWT
-- Verifica que `JWT_SECRET` esté definido en `.env`
-- Asegúrate de que el secret sea lo suficientemente seguro
+## 🎮 Minecraft: Skins & Stats
 
-### Problemas con la API de Minecraft
-- La API de Mojang puede tener limitaciones de rate
-- Los jugadores offline no tendrán UUID oficial
+- Se consulta la API de Mojang para obtener UUIDs y metadata
+- Render de skins (componentes específicos para mostrar skins)
+- Estadísticas: kills, deaths, wins — almacenadas en MongoDB
 
-## 📝 Notas de desarrollo
+---
 
-- El proyecto usa Astro con integración de React
-- Los componentes React se cargan con `client:load`
-- La base de datos se conecta automáticamente en las API routes
-- Los modelos incluyen validaciones y middleware de Mongoose
+## 🐛 Solución de problemas (rápido)
 
-## 🤝 Contribución
+- Error de conexión a MongoDB:
+  - Asegúrate que `MONGODB_URI` en `.env` sea correcta y que Mongo esté corriendo.
+- Error de JWT:
+  - Comprueba `JWT_SECRET` en `.env`.
+- Problemas con la API de Mojang:
+  - La API puede limitar por rate; considera cachear respuestas.
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+---
 
-## 📄 Licencia
+## ✅ Buenas prácticas y notas de desarrollo
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
+- Los componentes React se cargan con `client:load` en Astro cuando es necesario.
+- La conexión a MongoDB se gestiona desde `src/lib/mongodb.js` y se reutiliza en API routes.
+- Modelos Mongoose incluyen validaciones básicas.
+
+---
+
+## 🤝 Cómo contribuir
+
+1. Haz fork del repositorio
+2. Crea una rama para tu feature: `git checkout -b feature/NuevoFeature`
+3. Haz commits claros y atómicos
+4. Push a tu rama y abre un Pull Request
+
+Recomendaciones: escribe tests pequeños para nuevas funcionalidades y sigue el estilo del proyecto.
+
+---
+
+## 📬 Contacto y créditos
+
+- Autor: Sebxs940
+- Repositorio: https://github.com/Sebxs940/Honlycraft-Web
+- Si quieres sugerir mejoras o reportar bugs, abre un issue con título claro y pasos para reproducir.
+
+---
+
+## � Licencia
+
+Este proyecto está licenciado bajo la **MIT License** — ver `LICENSE` para detalles.
+
+---
+
+Gracias por visitar HonlyCraft Web — si quieres, puedo también:
+
+- Añadir badges de CI / coverage
+- Generar un `CONTRIBUTING.md` más detallado
+- Añadir ejemplos rápidos de uso de la API
+
+Di qué prefieres y continúo con los siguientes pasos 🚀
