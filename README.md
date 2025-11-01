@@ -2,6 +2,13 @@
 
 ![HonlyCraft](public/logo.png)
 
+[![GitHub license](https://img.shields.io/github/license/Sebxs940/Honlycraft-Web)](https://github.com/Sebxs940/Honlycraft-Web/blob/main/LICENSE)
+[![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01.svg?logo=astro)](https://astro.build)
+[![React](https://img.shields.io/badge/React-19.x-61DAFB.svg?logo=react)](https://reactjs.org)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Latest-47A248.svg?logo=mongodb)](https://www.mongodb.com)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933.svg?logo=node.js)](https://nodejs.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
+
 Una web moderna para el servidor de Minecraft **HonlyCraft** — construida con Astro, React y MongoDB. Este repositorio contiene la web pública, el panel de administración y APIs para estadísticas y skins de jugadores.
 
 ---
@@ -138,6 +145,68 @@ Endpoints principales:
 
 ---
 
+## 🔌 Ejemplos de uso de la API
+
+### 📊 Obtener estadísticas de jugador
+
+```bash
+curl -X GET http://localhost:3000/api/stats/player/{uuid} \
+  -H "Authorization: Bearer {tu-token}"
+```
+
+Respuesta:
+```json
+{
+  "uuid": "abc-123",
+  "stats": {
+    "kills": 100,
+    "deaths": 50,
+    "wins": 25
+  }
+}
+```
+
+### 👤 Obtener skin de jugador
+
+```bash
+curl -X GET http://localhost:3000/api/player/skin/{username} \
+  -H "Authorization: Bearer {tu-token}"
+```
+
+Respuesta:
+```json
+{
+  "username": "Notch",
+  "uuid": "069a79f4-44e9-4726-a5be-fca90e38aaf5",
+  "skinUrl": "http://textures.minecraft.net/texture/..."
+}
+```
+
+### 🔑 Autenticación
+
+```bash
+# Login
+curl -X POST http://localhost:3000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "user", "password": "pass123"}'
+
+# Respuesta
+{
+  "token": "eyJhbG...",
+  "user": {
+    "username": "user",
+    "role": "user"
+  }
+}
+```
+
+Para todos los endpoints protegidos, incluye el token JWT en el header:
+```bash
+Authorization: Bearer eyJhbG...
+```
+
+---
+
 ## 🐛 Solución de problemas (rápido)
 
 - Error de conexión a MongoDB:
@@ -181,11 +250,3 @@ Recomendaciones: escribe tests pequeños para nuevas funcionalidades y sigue el 
 Este proyecto está licenciado bajo la **MIT License** — ver `LICENSE` para detalles.
 
 ---
-
-Gracias por visitar HonlyCraft Web — si quieres, puedo también:
-
-- Añadir badges de CI / coverage
-- Generar un `CONTRIBUTING.md` más detallado
-- Añadir ejemplos rápidos de uso de la API
-
-Di qué prefieres y continúo con los siguientes pasos 🚀
