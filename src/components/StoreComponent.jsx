@@ -134,7 +134,7 @@ export default function StoreComponent() {
           {/* Encabezado */}
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-4xl md:text-5xl font-regular-custom text-white flex-1 text-center">
-              <span className="text-white">Tienda</span>
+              <span className="text-white font-light">Tienda</span>
               <span className="mx-1"></span>
               <span className="text-blue-400">HonlyCraft</span>
             </h1>
@@ -177,7 +177,7 @@ export default function StoreComponent() {
                 className="bg-gray-800/80 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-700/50 flex flex-col"
               >
                 <div className="relative">
-                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-fill" />
                   {!product.inStock && (
                     <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
                       AGOTADO
