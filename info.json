@@ -122,7 +122,7 @@
   "survivalprotec": [
     {
       "id": 13,
-      "name": "Obsidiana 140x140",
+      "name": "Protección Obsidiana 140x140",
       "price": 1.60,
       "originalPrice": 2.50,
       "image": "/products/obsidian_140.png",
@@ -131,7 +131,7 @@
     },
     {
       "id": 14,
-      "name": "Esmeralda 190x190",
+      "name": "Protección Esmeralda 190x190",
       "price": 3.00,
       "originalPrice": 4.50,
       "image": "/products/emerald_190.png",
@@ -140,7 +140,7 @@
     },
     {
       "id": 15,
-      "name": "Faro 230x230",
+      "name": "Protección Faro 230x230",
       "price": 4.50,
       "originalPrice": 6.00,
       "image": "/products/lighthouse_230.png",
