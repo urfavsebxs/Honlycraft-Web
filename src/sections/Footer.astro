@@ -1,6 +1,26 @@
 ---
 // Footer de HonlyCraft
 import Info from 'info.json';
+import X from '@/icons/X.astro'
+import Discord from '@/icons/Discord.astro'
+import Youtube from '@/icons/Youtube.astro'
+import Instagram from '@/icons/Instagram.astro'
+import Honly from '../../public/favicon.webp'
+
+const currentYear = new Date().getFullYear();
+const socialIcons = {
+  Youtube,
+  Discord,
+  Instagram,
+  X,
+}
+
+const socialLinks = {
+  X: 'https://x.com/HonlyCraftNW',
+  Discord: 'https://discord.gg/YnwzTRVZNK',
+  Youtube: 'https://www.youtube.com/@HonlyCraft',
+  Instagram: 'https://www.instagram.com/honlycraftnw',
+}
 ---
 
 <footer class="footer-section bg-gray-900 text-white py-16 px-4">
@@ -10,8 +30,8 @@ import Info from 'info.json';
       <!-- Información de la empresa -->
       <div class="md:col-span-2">
         <div class="flex items-center gap-4 mb-6">
-          <div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center">
-            <span class="text-2xl">🎮</span>
+          <div class="w-12 h-12 rounded-full flex items-center justify-center">
+            <img src={Honly.src} alt="HonlyLogo" class="mb-[7px]"/>
           </div>
           <h3 class="text-3xl font-regular">
             <span class="text-amber-400">Honly</span>
@@ -19,8 +39,7 @@ import Info from 'info.json';
           </h3>
         </div>
         <p class="text-gray-300 mb-6 max-w-md">
-          La mejor red de servidores de Minecraft en español. Únete a nuestra comunidad 
-          y disfruta de una experiencia única con nuestros gamemodes exclusivos.
+          El mejor servidor de Minecraft en español. Únete a nuestra comunidad y disfruta de una experiencia única con nuestros gamemodes.
         </p>
         <div class="space-y-2">
           <p class="text-gray-300">
@@ -62,25 +81,23 @@ import Info from 'info.json';
         <div class="flex items-center gap-6">
           <h5 class="text-lg font-bold text-amber-400">Síguenos:</h5>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
-              <span class="text-white">📱</span>
-            </a>
-            <a href="#" class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center hover:bg-purple-700 transition">
-              <span class="text-white">💬</span>
-            </a>
-            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition">
-              <span class="text-white">📺</span>
-            </a>
-            <a href="#" class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
-              <span class="text-white">🐦</span>
-            </a>
+            <a href="">
+            {(Object.values(socialIcons) as any[]).map((Icon, i) => (
+              <div key={i}>
+                <a href={socialLinks[Object.keys(socialIcons)[i]]} 
+                target="_blank"
+                class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-400 transition">
+                  <Icon class="text-white" />
+                </a>
+              </div>
+            ))}
           </div>
         </div>
 
         <!-- Información de contacto -->
         <div class="text-center md:text-right">
           <p class="text-gray-300 mb-2">¿Necesitas ayuda?</p>
-          <p class="text-amber-400 font-bold">support@honlycraft.com</p>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@honlycraft.com&su=Asunto%20del%20correo&body=Hola,%20te%20escribo%20para..." target="_blank" class="text-amber-400 font-bold">support@honlycraft.com</a>
         </div>
       </div>
     </div>
@@ -88,12 +105,12 @@ import Info from 'info.json';
     <!-- Copyright -->
     <div class="border-t border-gray-700 pt-8 mt-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
-        <p>&copy; 2024 HonlyCraft. Todos los derechos reservados.</p>
+        <p>&copy; {currentYear} HonlyCraft. Todos los derechos reservados.</p>
         <div class="flex gap-6">
           <a href="/privacidad" class="hover:text-amber-400 transition">Política de Privacidad</a>
           <a href="/terminos" class="hover:text-amber-400 transition">Términos de Servicio</a>
         </div>
-        <p>Minecraft © Mojang AB 2009-2024</p>
+        <p>Minecraft © Mojang AB 2009-{currentYear}</p>
       </div>
     </div>
   </div>

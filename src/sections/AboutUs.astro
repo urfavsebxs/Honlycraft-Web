@@ -1,0 +1,225 @@
+---
+import Logo from '../../public/favicon.webp';
+import Comunidad from '@/icons/Nosotros/Comunidad.png';
+import Innovacion from '@/icons/Nosotros/Innovacion.png';
+import Diversion from '@/icons/Nosotros/Diversion.png';
+import Data from '../../AboutUs.json';
+---
+
+<!-- Hero Section Nosotros -->
+	<section class="hero-about relative min-h-screen flex items-center justify-center px-4 py-20">
+		<div class="text-center max-w-6xl mx-auto z-10">
+			<h1 class="text-6xl md:text-8xl font-regular mb-6 text-shadow">
+				<span class="text-amber-400">Sobre</span>
+				<span class="text-blue-400">Nosotros</span>
+			</h1>
+			<p class="text-2xl md:text-3xl font-light text-white mb-8 text-shadow max-w-4xl mx-auto">
+				Conoce la historia detrás de HonlyCraft y el equipo que hace posible esta increíble experiencia de Minecraft.
+			</p>
+		</div>
+	</section>
+
+	<!-- Nuestra Historia -->
+	<section class="history-section py-20 px-4 bg-gradient-to-b from-gray-900/80 to-black/90">
+		<div class="max-w-6xl mx-auto">
+			<div class="grid lg:grid-cols-2 gap-12 items-center">
+				<div>
+					<h2 class="text-5xl font-regular mb-8 text-white text-shadow">
+						Nuestra <span class="text-amber-400">Historia</span>
+					</h2>
+					<div class="space-y-6 text-white/90 text-lg leading-relaxed">
+						<p>
+							HonlyCraft nació de la pasión de un grupo de desarrolladores y jugadores de Minecraft 
+							que soñaban con crear la mejor experiencia de servidor en español. Fundado en 2024, 
+							nuestro objetivo siempre ha sido ofrecer una comunidad inclusiva y emocionante.
+						</p>
+						<p>
+							Lo que comenzó como un pequeño proyecto entre amigos se ha convertido en una de las 
+							redes de servidores más innovadoras, combinando gamemodes únicos con tecnología de vanguardia.
+						</p>
+						<p>
+							Hoy, miles de jugadores confían en nosotros para su entretenimiento diario, y seguimos 
+							creciendo con nuevas características y mejoras constantes.
+						</p>
+					</div>
+				</div>
+				<div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
+					<div class="text-center">
+						<div class="w-32 h-32 rounded-full mx-auto mb-6 flex items-center justify-center">
+							<img src={Logo.src} alt="Logo de HonlyCraft"/>
+						</div>
+						<h3 class="text-3xl font-bold mb-4 text-gray-800">Fundado en 2024</h3>
+						<p class="text-gray-600 text-lg">
+							Con la visión de crear la mejor experiencia de Minecraft en español
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Nuestros Valores -->
+	<section class="values-section py-20 px-4 bg-gradient-to-b from-black/90 to-gray-900/80">
+		<div class="max-w-7xl mx-auto">
+			<h2 class="text-5xl font-regular text-center mb-16 text-white text-shadow">
+				Nuestros <span class="text-amber-400">Valores</span>
+			</h2>
+			<div class="grid md:grid-cols-3 gap-8">
+				<!-- Comunidad -->
+				<div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg">
+							<img src={Comunidad.src} alt="Icono de Comunidad" class="w-10 h-10">
+						</div>
+						<h3 class="text-2xl font-bold mb-4 text-gray-800">Comunidad</h3>
+						<p class="text-gray-600 leading-relaxed">
+							Creemos en el poder de una comunidad unida. Todos los jugadores son bienvenidos, 
+							sin importar su nivel de experiencia o procedencia.
+						</p>
+					</div>
+				</div>
+
+				<!-- Innovación -->
+				<div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg">
+							<img src={Innovacion.src} alt="Icono de Innovación" class="w-16 h-16">
+						</div>
+						<h3 class="text-2xl font-bold mb-4 text-gray-800">Innovación</h3>
+						<p class="text-gray-600 leading-relaxed">
+							Constantemente buscamos nuevas formas de mejorar la experiencia de juego 
+							con características únicas y tecnología de punta.
+						</p>
+					</div>
+				</div>
+
+				<!-- Diversión -->
+				<div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+					<div class="text-center">
+						<div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg">
+							<img src={Diversion.src} alt="Icono de Diversión" class="w-12 h-12">
+						</div>
+						<h3 class="text-2xl font-bold mb-4 text-gray-800">Diversión</h3>
+						<p class="text-gray-600 leading-relaxed">
+							Al final del día, todo se trata de pasarla bien. Nos esforzamos por crear 
+							experiencias memorables y emocionantes para todos.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Nuestro Equipo -->
+	<section class="team-section py-20 px-4 bg-gradient-to-b from-gray-900/80 to-black/90">
+		<div class="max-w-7xl mx-auto">
+			<h2 class="text-5xl font-regular text-center mb-16 text-white text-shadow">
+				Nuestro <span class="text-amber-400">Equipo</span>
+			</h2>
+			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+				<!-- Fundador -->
+				<div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+					<div class="text-center">
+						<div class="w-24 h-24 bg-amber-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+							<img src={Data.images[0]} alt={Data.name[0]} class="w-14 h-14">
+						</div>
+						<h3 class="text-xl font-bold mb-2 text-gray-800">{Data.name[0]}</h3>
+						<p class="text-amber-500 font-bold mb-2">{Data.cargos[0]}</p>
+						<p class="text-gray-600 text-sm">
+							{Data.descriptions[0]}
+						</p>
+					</div>
+				</div>
+
+				<!-- Desarrollador Principal -->
+				<div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+					<div class="text-center">
+						<div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+							<img src={Data.images[1]} alt={Data.name[1]} class="w-14 h-14">
+						</div>
+						<h3 class="text-xl font-bold mb-2 text-gray-800">{Data.name[1]}</h3>
+						<p class="text-blue-500 font-bold mb-2">{Data.cargos[1]}</p>
+						<p class="text-gray-600 text-sm">
+							{Data.descriptions[1]}
+						</p>
+					</div>
+				</div>
+
+				<!-- Community Manager -->
+				<div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+					<div class="text-center">
+						<div class="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+							<img src={Data.images[2]} alt={Data.name[2]} class="w-14 h-14">
+						</div>
+						<h3 class="text-xl font-bold mb-2 text-gray-800">{Data.name[2]}</h3>
+						<p class="text-green-500 font-bold mb-2">{Data.cargos[2]}</p>
+						<p class="text-gray-600 text-sm">
+							{Data.descriptions[2]}
+						</p>
+					</div>
+				</div>
+
+				<!-- Moderador Senior -->
+				<div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+					<div class="text-center">
+						<div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+							<img src={Data.images[3]} alt={Data.name[3]} class="w-14 h-14">
+						</div>
+						<h3 class="text-xl font-bold mb-2 text-gray-800">{Data.name[3]}</h3>
+						<p class="text-purple-500 font-bold mb-2">{Data.cargos[3]}</p>
+						<p class="text-gray-600 text-sm">
+							{Data.descriptions[3]}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Estadísticas -->
+	<section class="stats-section py-20 px-4 bg-gradient-to-r from-amber-500/20 to-blue-500/20">
+		<div class="max-w-6xl mx-auto text-center">
+			<h2 class="text-5xl font-regular mb-16 text-white text-shadow">
+				HonlyCraft en <span class="text-amber-400">Números</span>
+			</h2>
+			<div class="grid md:grid-cols-4 gap-8">
+				<div class="text-center">
+					<div class="text-5xl font-bold text-amber-400 mb-2">2,500+</div>
+					<div class="text-white text-lg">Jugadores Registrados</div>
+				</div>
+				<div class="text-center">
+					<div class="text-5xl font-bold text-blue-400 mb-2">24/7</div>
+					<div class="text-white text-lg">Servidor Activo</div>
+				</div>
+				<div class="text-center">
+					<div class="text-5xl font-bold text-green-400 mb-2">4</div>
+					<div class="text-white text-lg">Gamemodes Únicos</div>
+				</div>
+				<div class="text-center">
+					<div class="text-5xl font-bold text-purple-400 mb-2">99.9%</div>
+					<div class="text-white text-lg">Uptime Garantizado</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Call to Action -->
+	<section class="cta-section py-20 px-4 bg-gradient-to-b from-black/90 to-gray-900/80">
+		<div class="max-w-4xl mx-auto text-center">
+			<h2 class="text-5xl font-regular mb-8 text-white text-shadow">
+				¿Listo para <span class="text-amber-400">Unirte</span>?
+			</h2>
+			<p class="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+				Únete a nuestra comunidad y forma parte de la mejor experiencia de Minecraft en español. 
+				¡Te estamos esperando!
+			</p>
+			<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+				<button class="btn-primary text-xl px-8 py-4 pulse-glow">
+					🎮 Jugar Ahora
+				</button>
+				<button class="btn-secondary text-xl px-8 py-4">
+					💬 Unirse a Discord
+				</button>
+			</div>
+		</div>
+	</section>
